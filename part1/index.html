@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson14</title>
+</head>
+<style>
+    .square {
+        border: 1px solid black;
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+    }
+</style>
+
+<body>
+    <div class="container"></div>   
+    <div class="container" ></div> 
+    <div class="container" ></div> 
+    <div class="container" ></div> 
+    <div class="container" ></div> 
+    <script>
+        const colors = ['blue', 'green', 'yellow'];
+        const container = document.querySelectorAll('.container');
+       
+        
+        container.forEach((el) =>{
+            let color = 0;
+            el.style.backgroundColor = colors[color];
+            el.addEventListener('click', function (){
+                if (color < colors.length-1) {
+                    ++color;
+                } else{
+                    color = 0;
+                } 
+                el.style.backgroundColor = colors[color];
+                document.body.append(el);
+        });
+        });
+       
+    </script>
+    
+</body>
+</html>
