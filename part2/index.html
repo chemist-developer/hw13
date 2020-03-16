@@ -5,42 +5,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Lesson14</title>
+    <title>Document</title>
 </head>
 <style>
-    .container {
+    .square {
+        box-sizing: border-box;
         border: 1px solid black;
         display: inline-block;
         width: 100px;
         height: 100px;
+        position: relative;
+    }
+
+    .number {
+        position: absolute;
+        left: 45%;
+        top: 40%;
+    }
+
+    .plus {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+
+    .minus {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+
+    .plus::after {
+        content: '+';
+    }
+
+    .minus::after {
+        content: '-';
     }
 </style>
 
 <body>
-    <div class="container"></div>   
-    <div class="container" ></div> 
-    <div class="container" ></div> 
-    <div class="container" ></div> 
-    <div class="container" ></div> 
-    <script>
-        "use strict";
-        const colors = ['blue', 'green', 'yellow'];
-        const container = document.querySelectorAll('.container');
-        container.forEach((el) =>{
-            let color = 0;
-            el.style.backgroundColor = colors[color];
-            el.addEventListener('click', function (){
-                if (color < colors.length-1) {
-                    color++;
-                } else{
-                    color = 0;
-                } 
-                el.style.backgroundColor = colors[color];
-                document.body.append(el);
-        });
-        });
-       
-    </script>
+    <div class="square">
+        <span class="number">0</span>
+        <button class="squareButton plus" type='button'></button>
+        <button class="squareButton minus" type='button'></button>
+    </div>
+    <div class="square">
+        <span class="number">0</span>
+        <button class="squareButton plus" type='button'></button>
+        <button class="squareButton minus" type='button'></button>
+    </div>
+    <div class="square">
+        <span class="number">0</span>
+        <button class="squareButton plus" type='button'></button>
+        <button class="squareButton minus" type='button'></button>
+    </div>
+    <div class="square">
+        <span class="number">0</span>
+        <button class="squareButton plus" type='button'></button>
+        <button class="squareButton minus" type='button'></button>
+    </div>
+    <div class="square">
+        <span class="number">0</span>
+        <button class="squareButton plus" type='button'></button>
+        <button class="squareButton minus" type='button'></button>
+    </div>
     
+
+
+    <script>
+        const buttons = document.querySelectorAll('.squareButton');
+        buttons.forEach((el) => el.addEventListener('click', function () {
+            const number = this.parentNode.querySelector('.number');
+            if (this.classList.contains('plus')) {
+                number.textContent = +number.textContent + 1;
+            } else {
+                number.textContent = +number.textContent - 1; 
+            }
+        }));
+    </script>
 </body>
+
 </html>
